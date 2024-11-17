@@ -6,7 +6,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
-import 'package:my_social_auth/splash_screen/view/splash_screen.dart';
+
+import '../google_auth/view/splash_screen.dart';
 
 
 class NotificationServices {

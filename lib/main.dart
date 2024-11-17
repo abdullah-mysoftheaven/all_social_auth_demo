@@ -3,13 +3,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:my_social_auth/splash_screen/view/splash_screen.dart';
 
 
 
 
+import 'facebook_auth/view/facebook_auth_screen.dart';
 import 'firebase/FCM.dart';
 import 'firebase/NotificationServices.dart';
+import 'google_auth/view/splash_screen.dart';
 
 
 Future<void> main() async {
@@ -17,7 +18,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  runApp( MyMehendiDesignApp());
+  runApp( MyCustomApp());
   // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
   //   // statusBarColor:awsStartColor,
   //   // systemNavigationBarColor:awsEndColor,
@@ -25,8 +26,8 @@ Future<void> main() async {
 
 }
 
-class MyMehendiDesignApp extends StatelessWidget {
-  MyMehendiDesignApp({Key? key}) : super(key: key);
+class MyCustomApp extends StatelessWidget {
+  MyCustomApp({Key? key}) : super(key: key);
   static final navKey = GlobalKey<NavigatorState>();
   var notificationTitle = 'No Title';
   var notificationBody = 'No Body';
@@ -50,7 +51,7 @@ class MyMehendiDesignApp extends StatelessWidget {
 
   _changeBody(String msg) {
     notificationBody = msg;
-    final context = MyMehendiDesignApp.navKey.currentState?.overlay?.context;
+    final context = MyCustomApp.navKey.currentState?.overlay?.context;
     // _showAlert(Get.context!, notificationTitle, notificationBody, notificationData);
   }
 
@@ -82,8 +83,9 @@ class MyMehendiDesignApp extends StatelessWidget {
             textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
           ),
           home:
-          SplashScreenPage(),
-          // BabyImageListScreenPage(),
+          // SplashScreenPage(),
+          FaceBookAuthScreenPage(),
+
         );
       },
 

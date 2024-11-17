@@ -35,10 +35,12 @@
             </intent-filter>
         </activity>
 
-        <!-- Add the following meta-data to define your Google Services -->
-<!--        <meta-data-->
-<!--            android:name="com.google.android.gms.ads.APPLICATION_ID"-->
-<!--            android:value="your_app_id"/> &lt;!&ndash; Replace with your actual app ID &ndash;&gt;-->
+<!-- Add the following meta-data to define your Google Services -->
+<!-- <meta-data-->
+<!-- android:name="com.google.android.gms.ads.APPLICATION_ID"-->
+<!-- android:value="your_app_id"/> &lt;!&ndash; Replace with your actual app ID &ndash;&gt;-->
+
+
         <meta-data
             android:name="com.google.firebase.auth.api.internal.FirebaseAuthService"
             android:value="true"/>
