@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!--    <string name="app_name">My Social Auth</string>-->
+<!--    <string name="facebook_app_id">1797717331057010</string>-->
+<!--    <string name="fb_login_protocol_scheme">fb1797717331057010</string>-->
+<!--    <string name="facebook_client_token">eadf7adb678fbbc46f790460a5413d67</string>-->
+
+
+    <string name="app_name">My Social Auth</string>
+    <string name="facebook_app_id">933286382021038</string>
+    <string name="fb_login_protocol_scheme">fb933286382021038</string>
+    <string name="facebook_client_token">a122fd2b1898a0ecd4ff929aad02825d</string>
+
+
+</resources>
