@@ -64,13 +64,41 @@ class FaceBookAuthPageController extends GetxController {
 
   Future<UserCredential> signInWithFacebook() async {
     // Trigger the sign-in flow
-    final LoginResult loginResult = await FacebookAuth.instance.login(permissions: ['email', 'public_profile'],);
+    final LoginResult loginResult = await FacebookAuth.instance.login(permissions: ['email', 'public_profile'],
+
+    );
 
     // Create a credential from the access token
     final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential("${loginResult.accessToken?.tokenString}");
 
     // Once signed in, return the UserCredential
     return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+  }
+
+  void printUserData(User? user) {
+    if (user != null) {
+      userName(user.displayName);
+
+      userInfo("""
+      'User signed in:'
+      'Display Name: ${user.displayName}'
+      'Photo URL: ${user.photoURL}'
+      'UID: ${user.uid}'
+      'phoneNumber: ${user.phoneNumber}'
+      'emailVerified: ${user.emailVerified}'
+      'tenantId: ${user.tenantId}'
+      'refreshToken: ${user.refreshToken}'
+      """);
+
+
+      print('User signed in:');
+      print('Display Name: ${user.displayName}');
+      print('Email: ${user.email}');
+      print('Photo URL: ${user.photoURL}');
+      print('UID: ${user.uid}');
+    } else {
+      print('User is null. Sign-in might have failed.');
+    }
   }
 
   // Sign-out from Facebook and Firebase
@@ -83,4 +111,7 @@ class FaceBookAuthPageController extends GetxController {
       log('Error during Facebook sign-out: $e');
     }
   }
+
+
+
 }

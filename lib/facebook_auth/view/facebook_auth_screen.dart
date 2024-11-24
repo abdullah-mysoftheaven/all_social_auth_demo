@@ -31,7 +31,7 @@ class FaceBookAuthScreenPage extends StatelessWidget {
 
                           User? user = userCredential.user;
                           // Print user data using the new method
-                          // pageController.printUserData(user);
+                          pageController.printUserData(user);
                         } catch (e) {
                           print('Error signing in: $e');
                         }
@@ -48,7 +48,7 @@ class FaceBookAuthScreenPage extends StatelessWidget {
                     SizedBox(height: 15.h),
                     ElevatedButton(
                       onPressed: () async {
-                        // await pageController.signOutWithGoogle();
+                         await pageController.signOutWithFacebook();
                       },
                       child: Text(
                         "Facebook Sign Out",
@@ -80,4 +80,5 @@ class FaceBookAuthScreenPage extends StatelessWidget {
       ),
     );
   }
+
 }
