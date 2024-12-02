@@ -7,7 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 
-import '../google_auth/view/splash_screen.dart';
+import '../about_page/view/about_page.dart';
+import '../contact_us_page/view/contact_us_page.dart';
+import '../facebook_auth/view/facebook_auth_screen.dart';
+import '../google_auth/view/google_signin.dart';
 
 
 class NotificationServices {
@@ -158,10 +161,47 @@ class NotificationServices {
   }
 
   void handleMessage(BuildContext context, RemoteMessage message) {
-    if (message.data['type'] == 'msj') {
+    // if (message.data['type'] == 'msj') {
+    //
+    //   Get.to(SplashScreenPage());
+    //
+    // }
 
-      Get.to(SplashScreenPage());
+
+
+    String? type = message.data['type'];
+
+    if (type == 'contact') {
+      Get.to(() => ContactUsScreenPage());
+    }
+
+    if (type == 'about') {
+
+      Get.to(() => AboutScreenPage(),
+        arguments: {
+          "item_id" : message.data['item_id'].toString(),
+        },);
+
+      Get.to(() => AboutScreenPage());
+    }
+
+    if (type == 'loginGoogle') {
+      Get.to(() => GoogleSigninScreenPage());
+    }
+
+
+    if (message.data['type'] == 'facebook') {
+
+      Get.to(FaceBookAuthScreenPage());
 
     }
+
+    // if (message.data['type'] == 'msj') {
+    //
+    //   Get.to(FaceBookAuthScreenPage());
+    //
+    // }
   }
+
+
 }

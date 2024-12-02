@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../constant/Colors.dart';
-import '../controller/splash_screen_page_controller.dart';
+import '../controller/google_signin_page_controller.dart';
 
-class SplashScreenPage extends StatelessWidget {
-  final pageController = Get.put(SplashScreenPageController());
+class GoogleSigninScreenPage extends StatelessWidget {
+  final pageController = Get.put(GoogleSigninScreenPageController());
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +134,7 @@ class SplashScreenPage extends StatelessWidget {
                                           crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
                                             Text(
-                                              "Social Auth",
+                                              "Social Auth Google",
                                               style: TextStyle(
                                                 fontFamily: "Noto Sans Bengali UI",
                                                 fontSize: 25.sp,

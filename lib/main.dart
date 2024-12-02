@@ -7,10 +7,12 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 
 
+import 'about_page/view/about_page.dart';
+import 'contact_us_page/view/contact_us_page.dart';
 import 'facebook_auth/view/facebook_auth_screen.dart';
 import 'firebase/FCM.dart';
 import 'firebase/NotificationServices.dart';
-import 'google_auth/view/splash_screen.dart';
+import 'google_auth/view/google_signin.dart';
 
 
 Future<void> main() async {
@@ -40,6 +42,8 @@ class MyCustomApp extends StatelessWidget {
 
     final firebaseMessaging = FCM();
     firebaseMessaging.setNotifications();
+
+
 
     firebaseMessaging.streamCtlr.stream.listen(_changeData);
     firebaseMessaging.bodyCtlr.stream.listen(_changeBody);
@@ -83,8 +87,9 @@ class MyCustomApp extends StatelessWidget {
             textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
           ),
           home:
-          // SplashScreenPage(),
-          FaceBookAuthScreenPage(),
+          ContactUsScreenPage(),
+          // GoogleSigninScreenPage(),
+          // FaceBookAuthScreenPage(),
 
         );
       },

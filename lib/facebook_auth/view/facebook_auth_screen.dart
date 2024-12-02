@@ -74,7 +74,35 @@ class FaceBookAuthScreenPage extends StatelessWidget {
                   ],
                 ),
               ),
-            )
+            ),
+
+            TweenAnimationBuilder(
+              tween: Tween<double>(begin: 30, end: 0),
+              duration: const Duration(seconds: 1), // Adjust the duration as needed
+              builder: (_, double value, __) {
+                return Transform.translate(
+                  offset: Offset(0, value),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Social Auth Facebook",
+                        style: TextStyle(
+                          fontFamily: "Noto Sans Bengali UI",
+                          fontSize: 25.sp,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xff000000),
+                          height: 27 / 20,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+            SizedBox(height: 20,)
           ],
         ),
       ),

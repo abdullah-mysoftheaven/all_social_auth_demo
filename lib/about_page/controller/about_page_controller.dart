@@ -2,16 +2,22 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class SplashScreenPageController extends GetxController {
+class AboutScreenPageController extends GetxController {
   var showImage = false.obs;
 
 
   var userName="".obs;
   var userInfo="".obs;
 
+  dynamic argumentData = Get.arguments;
+  var item_id="".obs;
   @override
   void onInit() {
     super.onInit();
+
+    try{
+      item_id(argumentData["item_id"].toString());
+    }catch(e){}
   }
 
   Future<UserCredential> signInWithGoogle() async {
