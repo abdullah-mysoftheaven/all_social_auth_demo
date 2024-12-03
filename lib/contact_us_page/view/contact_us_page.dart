@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../constant/Colors.dart';
+import '../../cyper_text.dart';
 import '../../decryption_data.dart';
 import '../../encryption_data.dart';
 import '../../rsa.dart';
@@ -46,7 +47,10 @@ class ContactUsScreenPage extends StatelessWidget {
                           // pageController.sha256encryptionAndDecryption();
 
 
-                          pageController.rsaencryptionAndDecryption();
+                          // pageController.rsaencryptionAndDecryption();
+
+
+                          CyperText().mainFunction("vhg544nbh544v","1");
 
                         },
                         child:Container(
