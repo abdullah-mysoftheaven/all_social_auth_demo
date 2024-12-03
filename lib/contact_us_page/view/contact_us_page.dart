@@ -8,6 +8,7 @@ import '../../constant/Colors.dart';
 import '../../cyper_text.dart';
 import '../../decryption_data.dart';
 import '../../encryption_data.dart';
+import '../../playbutton.dart';
 import '../../rsa.dart';
 import '../controller/contact_us_page_controller.dart';
 
@@ -69,7 +70,40 @@ class ContactUsScreenPage extends StatelessWidget {
                           ),
                         ) ,
                       ),
-                      
+
+                      Container(
+                        width: 200,
+                        height: 200,
+                        child: CustomPaint(
+                          painter: RoundedTrianglePainter(),
+                        ),
+                      ),
+
+
+                      Container(
+                        child: InkWell(
+                          onTap: (){
+
+                          },
+                          child: Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              CustomPaint(
+                                size: Size(60.w, 65.w), // Specify the size of the play button
+                                painter: PlayButtonPainter(),
+                              ),
+                              Text(
+                                '+  ',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                       SizedBox(height: 30.h,),
                       Text(
                         """
