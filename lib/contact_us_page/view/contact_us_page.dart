@@ -1,8 +1,13 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../constant/Colors.dart';
+import '../../decryption_data.dart';
+import '../../encryption_data.dart';
+import '../../rsa.dart';
 import '../controller/contact_us_page_controller.dart';
 
 class ContactUsScreenPage extends StatelessWidget {
@@ -23,7 +28,7 @@ class ContactUsScreenPage extends StatelessWidget {
                   child: Column(
 
                     children: [
-                      SizedBox(height: 100.h,),
+                      SizedBox(height: 60.h,),
                       Text(
                         "Contact Us",
                         style: TextStyle(
@@ -32,6 +37,35 @@ class ContactUsScreenPage extends StatelessWidget {
                           fontSize: 23.sp,
                         ),
                       ),
+                      SizedBox(height: 30.h,),
+                      InkWell(
+                        onTap: (){
+
+
+
+                          // pageController.sha256encryptionAndDecryption();
+
+
+                          pageController.rsaencryptionAndDecryption();
+
+                        },
+                        child:Container(
+                          padding: EdgeInsets.only(left: 20.w,right: 20.w,top: 15.h,bottom: 15.h),
+                          decoration: BoxDecoration(
+                              color: Colors.green,
+                              borderRadius: BorderRadius.circular(10.r)
+                          ),
+                          child: Text(
+                            "Encryption Data",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.sp,
+                            ),
+                          ),
+                        ) ,
+                      ),
+                      
                       SizedBox(height: 30.h,),
                       Text(
                         """
@@ -55,4 +89,5 @@ class ContactUsScreenPage extends StatelessWidget {
       ),
     );
   }
+
 }

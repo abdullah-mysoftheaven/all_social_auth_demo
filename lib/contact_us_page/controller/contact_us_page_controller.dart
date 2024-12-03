@@ -2,6 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../../encryption_data.dart';
+import '../../rsa.dart';
+
 class ContactUsScreenPageController extends GetxController {
   var showImage = false.obs;
 
@@ -14,58 +17,85 @@ class ContactUsScreenPageController extends GetxController {
     super.onInit();
   }
 
-  Future<UserCredential> signInWithGoogle() async {
-    // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-    if (googleUser == null) {
-      // The user canceled the sign-in
-      print('Sign-in was canceled by the user.');
-      throw Exception('Sign-in canceled by user');
+
+  // 9836308647138061308610811459313534173128511285147134302
+
+
+  rsaencryptionAndDecryption(){
+// Initialize the primes and keys
+    RSA.primeFiller();
+    RSA.setKeys();
+
+    String message = "I am Abdullah";  // Message to encrypt
+    print("Initial message:");
+    print(message);
+
+    // Encode (encrypt) the message
+    List<int> encodedMessage = RSA.encoder(message);
+
+    print("\n\nThe encoded message (encrypted by public key):");
+    print(encodedMessage.join(''));
+
+    // Decode (decrypt) the message
+
+
+    String decodedMessage = RSA.decoder(encodedMessage);
+
+    print("\n\nThe decoded message (decrypted by private key):");
+    print(decodedMessage);
+  }
+
+  rsaencryptionAndDecryption22(){
+
+    // Initialize the primes and keys
+    RSA.primeFiller();
+    RSA.setKeys();
+
+    // The encrypted string from the user
+    String encryptedCode = "6118472456924548472461787431635168591073107356926735";
+    print("Encrypted code:");
+    print(encryptedCode);
+
+    // Decrypt the encrypted code (each digit in the string)
+    String decryptedCode = '';
+    for (int i = 0; i < encryptedCode.length; i++) {
+      int digit = int.parse(encryptedCode[i]); // Convert each char to int
+      decryptedCode += RSA.decrypt(digit).toString(); // Decrypt each digit
     }
 
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth = await googleUser.authentication;
+    print("\nDecrypted code:");
+    print(decryptedCode);  // The decrypted result should be the original string
 
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
-
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
-  Future<void> signOutWithGoogle() async {
-    await GoogleSignIn().signOut(); // Sign out from Google
-    await FirebaseAuth.instance.signOut(); // Sign out from Firebase
-    print('User signed out');
+  sha256encryptionAndDecryption(){
+    SHA256 sha256 = SHA256();
+
+    // String input = "ABCDEFGH"; // Example input (up to 8 characters)
+    String input = "y"; // Example input (up to 8 characters)
+    String hash = sha256.hash(input);
+
+    print("Input: $input");
+    print("SHA256 Hash: $hash");
+
+
   }
 
-  void printUserData(User? user) {
-    if (user != null) {
-      userName(user.displayName);
-
-      userInfo("""
-      'User signed in:'
-      'Display Name: ${user.displayName}'
-      'Photo URL: ${user.photoURL}'
-      'UID: ${user.uid}'
-      'phoneNumber: ${user.phoneNumber}'
-      'emailVerified: ${user.emailVerified}'
-      'tenantId: ${user.tenantId}'
-      'refreshToken: ${user.refreshToken}'
-      """);
 
 
-      print('User signed in:');
-      print('Display Name: ${user.displayName}');
-      print('Email: ${user.email}');
-      print('Photo URL: ${user.photoURL}');
-      print('UID: ${user.uid}');
-    } else {
-      print('User is null. Sign-in might have failed.');
-    }
-  }
+
+
+
+
 }
+
+
+
+// void main() {
+//   SHA256 sha256 = SHA256();
+//   String input = "ABCDEFGH"; // Example input (up to 8 characters)
+//   String hash = sha256.hash(input);
+//   print("Input: $input");
+//   print("SHA256 Hash: $hash");
+// }
